@@ -31,7 +31,7 @@ function developDataFeatures(earthquakeData) {
 
 function createMap(earthquakes) {
 
-    // map layers
+    // Map layers from in class assignments
     var airMap = L.tileLayer("https://api.mapbox.com/styles/v1/mfatih72/ck30s2f5b19ws1cpmmw6zfumm/tiles/256/{z}/{x}/{y}?" + 
     "access_token=pk.eyJ1Ijoiand0a25zMDAiLCJhIjoiY2tqeG1nOHF3MDVlaTJwbzR3eXprbG0wMSJ9.h365mIKsJnPNlde7PCtxgA");
   
@@ -42,3 +42,47 @@ function createMap(earthquakes) {
         
     var lightMap = L.tileLayer("https://api.mapbox.com/styles/v1/mfatih72/ck30rkku519fu1drmiimycohl/tiles/256/{z}/{x}/{y}?" + 
     "access_token=pk.eyJ1Ijoiand0a25zMDAiLCJhIjoiY2tqeG1nOHF3MDVlaTJwbzR3eXprbG0wMSJ9.h365mIKsJnPNlde7PCtxgA");
+    
+// Tectonic layer
+var tectonicPlates = new L.LayerGroup();
+
+
+// Generate map
+L.map("mapid", {
+    center: [33.7, -118.19],
+    zoom: 4,
+    layers: [lightMap, earthquakes, tectonicPlates]
+});
+
+// Add tectonic plates 
+d3.json(tectonicPlatesURL, function(tectonicData) {
+    L.geoJson(tectonicData, {
+        color: "black",
+        weight: 2
+    })
+    .addTo(tectonicPlates);
+});
+
+}
+
+// color function w help from class
+function defineColor(magnitude) {
+if (magnitude > 5) {
+    return 'lightblue'
+} else if (magnitude > 4) {
+    return 'pink'
+} else if (magnitude > 3) {
+    return 'green'
+} else if (magnitude > 2) {
+    return 'orange'
+} else if (magnitude > 1) {
+    return 'blue'
+} else {
+    return 'red'
+}
+};
+
+// radius function
+function defineRadius(magnitude) {
+return magnitude * 20000;
+};
