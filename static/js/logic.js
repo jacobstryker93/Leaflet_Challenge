@@ -31,15 +31,7 @@ function developDataFeatures(earthquakeData) {
 
 function createMap(earthquakes) {
 
-    // Map layers from in class assignments
-    var airMap = L.tileLayer("https://api.mapbox.com/styles/v1/mfatih72/ck30s2f5b19ws1cpmmw6zfumm/tiles/256/{z}/{x}/{y}?" + 
-    "access_token=pk.eyJ1Ijoiand0a25zMDAiLCJhIjoiY2tqeG1nOHF3MDVlaTJwbzR3eXprbG0wMSJ9.h365mIKsJnPNlde7PCtxgA");
-  
-       
-    var satellite = L.tileLayer("https://api.mapbox.com/styles/v1/mfatih72/ck30r72r818te1cruud5wk075/tiles/256/{z}/{x}/{y}?" + 
-    "access_token=pk.eyJ1Ijoiand0a25zMDAiLCJhIjoiY2tqeG1nOHF3MDVlaTJwbzR3eXprbG0wMSJ9.h365mIKsJnPNlde7PCtxgA");
-
-        
+    // Map layer from in class assignments        
     var lightMap = L.tileLayer("https://api.mapbox.com/styles/v1/mfatih72/ck30rkku519fu1drmiimycohl/tiles/256/{z}/{x}/{y}?" + 
     "access_token=pk.eyJ1Ijoiand0a25zMDAiLCJhIjoiY2tqeG1nOHF3MDVlaTJwbzR3eXprbG0wMSJ9.h365mIKsJnPNlde7PCtxgA");
     
@@ -84,5 +76,5 @@ if (magnitude > 5) {
 
 // radius function
 function defineRadius(magnitude) {
-return magnitude * 20000;
+return magnitude * 30000;
 };
